@@ -34,9 +34,14 @@ public class Usuarios {
   }
   
 
-  public Usuario buscarPorID(Long id) {
-    return usuarios.get(id);
+  public Usuario buscarPorID(long i) {
+    return usuarios.get(i);
   }
+  
+  public Usuario buscarPorNombre(String nombre) {
+	  long i = gestorPersistencia.obtenerPorNombre(nombre).getUid();
+	    return usuarios.get(i);
+	  }
   
   public IteradorUsuarios iterador() {
     return new IteradorUsuarios(this);
@@ -46,7 +51,7 @@ public class Usuarios {
    * Lee los clientes desde almacenamiento
    */
   private void leeUsuarios() {
-    // Limpia el mapa y lo deja vacío
+    // Limpia el mapa y lo deja vacio
     usuarios.clear();
     // Obtiene una lista con todos los clientes
     List<Usuario> listaUsuarios = gestorPersistencia.obtenerTodos();

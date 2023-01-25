@@ -33,10 +33,7 @@ public class GestorPersistenciaBBDD {
     this.database = database;
   }
 
-
-
-  
-  public Usuario obtenerPorNumero(String nombre) {
+  public Usuario obtenerPorNombre(String nombre) {
     Connection conn = null;
     ResultSet rs = null;
     try {
@@ -64,6 +61,35 @@ public class GestorPersistenciaBBDD {
       }
     }
   }
+  
+  public Usuario obtenerPorClave(String clave) {
+	    Connection conn = null;
+	    ResultSet rs = null;
+	    try {
+	      conn = getConnection();
+	      Statement statement = conn.createStatement();
+	      rs = statement.executeQuery("SELECT id FROM User WHERE clave = "
+	          + statement.enquoteLiteral(clave) + ";");
+	      Usuario usuario = null;
+	      if (rs.next()) {
+	        usuario = new Usuario(rs.getLong("id"));
+	      }
+	      return usuario;
+	    } catch (SQLException e) {
+	      throw new GestorPersistenciaException(e);
+	    } finally {
+	      if (rs != null) {
+	        try {
+	          rs.close();
+	        } catch (SQLException e) {}
+	      }
+	      if (conn != null) {
+	        try {
+	          conn.close();
+	        } catch (SQLException e) {}
+	      }
+	    }
+	  }
 
   public List<Usuario> obtenerTodos() {
     Connection conn = null;
@@ -71,10 +97,10 @@ public class GestorPersistenciaBBDD {
     try {
       conn = getConnection();
       Statement statement = conn.createStatement();
-      rs = statement.executeQuery("SELECT id FROM cliente;");
+      rs = statement.executeQuery("SELECT id FROM User;");
       List<Usuario> usuarios = new ArrayList<>();
       while (rs.next()) {
-        usuarios.add(new Usuario(rs.getInt("id")));
+        usuarios.add(new Usuario(rs.getLong("id")));
       }
       return usuarios;
     } catch (SQLException e) {

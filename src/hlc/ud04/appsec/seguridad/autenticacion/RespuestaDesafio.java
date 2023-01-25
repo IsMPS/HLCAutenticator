@@ -8,7 +8,8 @@ package hlc.ud04.appsec.seguridad.autenticacion;
  */
 public interface RespuestaDesafio {
 	
-	public static void datoClaveBBDD(String clave) {
+	public static long getId() {
+		return 0;
 	}
 
 

@@ -1,5 +1,7 @@
 package hlc.ud04.appsec.seguridad.autenticacion;
 
+import hlc.ud04.appsec.persistencia.GestorPersistenciaBBDD;
+
 /**
  * Desafío que lanza un sistema de autenticación al usuario. Contiene información
  * que, combinada con lo que conoce el usuario, proporcionará una respuesta que le
@@ -9,7 +11,16 @@ package hlc.ud04.appsec.seguridad.autenticacion;
  */
 public interface Desafio {
 	
-	public static void datosBBDD(String nombre) {
+	public static long idUsuario() {
+		return 0;
+	}
+
+	public static String getNombre() {
+		return null;
+	}
+
+	public static long getId() {
+		return 0;
 	}
 
 }
