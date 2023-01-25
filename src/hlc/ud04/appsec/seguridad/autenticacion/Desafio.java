@@ -8,5 +8,8 @@ package hlc.ud04.appsec.seguridad.autenticacion;
  *
  */
 public interface Desafio {
+	
+	public static void datosBBDD(String nombre) {
+	}
 
 }

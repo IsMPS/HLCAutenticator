@@ -7,5 +7,9 @@ package hlc.ud04.appsec.seguridad.autenticacion;
  *
  */
 public interface RespuestaDesafio {
+	
+	public static void datoClaveBBDD(String clave) {
+	}
+
 
 }
